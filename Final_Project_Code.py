@@ -15,8 +15,8 @@ button = Button(14) #ask Prof Li to see if we can program a keyboard key to take
 with open('twitter_auth.json') as file:
     secrets = json.load(file)
 
-auth = tweepy.OAuthHandler(secrets['consumer_key'], secrets['consumer_secret'])
-auth.set_access_token(secrets['access_token'], secrets['access_token_secret'])
+auth = tweepy.OAuthHandler(secrets['kvXxAQ81MaIWXD8jzACc2gWMT'], secrets['YUfY9c9gsoHWnCVP2095oUM3gPIYwp4kUKx3SuDHhmxkVR5C4b'])
+auth.set_access_token(secrets['1252502209-vSxQEYyNUVV8Meue6NBXh6L9ba9vwRW8dnzH3dP'], secrets['SDX7qZ1BddEz7kSkBJ2OYpofczJWaK52bgEHEet434Gdd'])
 
 twitter = tweepy.API(auth)
 
