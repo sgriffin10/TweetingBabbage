@@ -4,8 +4,7 @@ from datetime import datetime
 from time import sleep
 # from gpiozero import Button
 from random import choice 
-#import tweepy
-import json
+import tweepy
 from credentials import *
 
 ## Set up the camera object and tactile button call
@@ -50,12 +49,13 @@ def take_photo():
     camera.stop_preview()
     # Code to get the timstamp
 	# Then take a photo and save it 
+    
 
 
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
 def send_tweet():
     twitter = twitter_setup()
-    twitter.update_with_media("DSC_0417.JPG", choice(status)) 
+    twitter.update_with_media("/home/pi/Desktop/TweetingBabbage/{0}".format(filename), choice(status)) 
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
