@@ -1,29 +1,35 @@
 ## Import the modules fro Rasp PI
-from picamera import PiCamera()
+# from picamera import PiCamera
 from datetime import datetime
 from time import sleep
-from gpiozero import Button
+# from gpiozero import Button
 from random import choice 
 import tweepy
 import json
+from credentials import *
 
 ## Set up the camera object and tactile button call
-camera = PiCamera()
-button = Button(14) #ask Prof Li to see if we can program a keyboard key to take the picture or act as the button
+# camera = PiCamera()
+# button = Button(14) #ask Prof Li to see if we can program a keyboard key to take the picture or act as the button
 
 ####### TWITTER API STUFF #######
-with open('twitter_auth.json') as file:
-    secrets = json.load(file)
+def twitter_setup():
+    """
+    Utility function to setup the Twitter's API
+    with our access keys provided.
+    """
+    # Authentication and access using keys:
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
-auth = tweepy.OAuthHandler(secrets['kvXxAQ81MaIWXD8jzACc2gWMT'], secrets['YUfY9c9gsoHWnCVP2095oUM3gPIYwp4kUKx3SuDHhmxkVR5C4b'])
-auth.set_access_token(secrets['1252502209-vSxQEYyNUVV8Meue6NBXh6L9ba9vwRW8dnzH3dP'], secrets['SDX7qZ1BddEz7kSkBJ2OYpofczJWaK52bgEHEet434Gdd'])
-
-twitter = tweepy.API(auth)
+    # Return API with authentication:
+    twitter = tweepy.API(auth)
+    return twitter
 
 status = ["Looking Fresh, keeping  it cash", 
             "Hello, World! I'm a Dub!", 
             "DM me if you think I'm a 10",
-            "I belong on Reddit's r/camwhores or r/hotpics", 
+            "I belong on Reddit's r/hotpics", 
             "Come on, you know I'm a dub"]
 
 
@@ -34,30 +40,34 @@ filename = ''
 def take_photo():
 	global filename
     ## Get the current datetime stamp 
-    now = datetime.now()
+    # now = datetime.now()
 
-    filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
-    camera.start_preview(alpha=190)
-    sleep(1)
-    camera.capture("/filename where it saves picture".format(filename))
-    camera.stop_preview()
+    # filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
+    # camera.start_preview(alpha=190)
+    # sleep(1)
+    # camera.capture("/filename where it saves picture".format(filename))
+    # camera.stop_preview()
     ## Code to get the timstamp
 	## Then take a photo and save it 
 
 
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
 def send_tweet():
-    twitter.update_with_media(filename, choice(status))
+    twitter = twitter_setup()
+    twitter.update_with_media("DSC_0417.JPG", choice(status)) 
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
 def main():
-    take_photo()
+    # take_photo()
     send_tweet()
 
 
 ## Code to trigger the function when the button is pressed
-btn.when_pressed = main
+# btn.when_pressed = main
+
+if __name__ == "__main__":
+    main()
 
 
 # button.when_pressed = take_photo
