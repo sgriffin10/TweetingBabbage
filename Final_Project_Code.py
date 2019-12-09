@@ -4,12 +4,12 @@ from datetime import datetime
 from time import sleep
 # from gpiozero import Button
 from random import choice 
-import tweepy
+#import tweepy
 import json
 from credentials import *
 
 ## Set up the camera object and tactile button call
-# camera = PiCamera()
+camera = PiCamera()
 # button = Button(14) #ask Prof Li to see if we can program a keyboard key to take the picture or act as the button
 
 ####### TWITTER API STUFF #######
@@ -38,14 +38,15 @@ filename = ''
 ## Take the picture by defining a function that gets timestamp, takes a photo and then saves it. 
 
 def take_photo():
-	global filename
+    
+    global filename
     # Get the current datetime stamp 
     now = datetime.now()
 
     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
     camera.start_preview(alpha=190)
     sleep(1)
-    camera.capture("/home/pi/Desktop".format(filename))
+    camera.capture("/home/pi/Desktop/TweetingBabbage/{0}".format(filename))
     camera.stop_preview()
     # Code to get the timstamp
 	# Then take a photo and save it 
