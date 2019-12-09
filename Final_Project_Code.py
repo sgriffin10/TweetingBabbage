@@ -1,5 +1,5 @@
 ## Import the modules fro Rasp PI
-# from picamera import PiCamera
+from picamera import PiCamera
 from datetime import datetime
 from time import sleep
 # from gpiozero import Button
@@ -39,16 +39,16 @@ filename = ''
 
 def take_photo():
 	global filename
-    ## Get the current datetime stamp 
-    # now = datetime.now()
+    # Get the current datetime stamp 
+    now = datetime.now()
 
-    # filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
-    # camera.start_preview(alpha=190)
-    # sleep(1)
-    # camera.capture("/filename where it saves picture".format(filename))
-    # camera.stop_preview()
-    ## Code to get the timstamp
-	## Then take a photo and save it 
+    filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
+    camera.start_preview(alpha=190)
+    sleep(1)
+    camera.capture("/home/pi/Desktop".format(filename))
+    camera.stop_preview()
+    # Code to get the timstamp
+	# Then take a photo and save it 
 
 
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
@@ -59,8 +59,8 @@ def send_tweet():
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
 def main():
-    # take_photo()
-    send_tweet()
+    take_photo()
+    # send_tweet()
 
 
 ## Code to trigger the function when the button is pressed
