@@ -45,7 +45,11 @@ def take_photo():
     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
     camera.start_preview(alpha=190)
     sleep(1)
+<<<<<<< HEAD
     camera.capture("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename))
+=======
+    camera.capture("/home/pi/Desktop/TweetingBabbage/Photos{0}".format(filename))
+>>>>>>> 5c7a77269b31aa34eae0dbafb0c93a14550ae65d
     camera.stop_preview()
     # Code to get the timstamp
 	# Then take a photo and save it 
@@ -59,6 +63,8 @@ def send_tweet():
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
+
+@app.route("/Final_Project_Code", methods= ["POST"])
 def main():
     take_photo()
     send_tweet()
