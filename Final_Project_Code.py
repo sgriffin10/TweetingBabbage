@@ -55,7 +55,7 @@ def take_photo():
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
 def send_tweet():
     twitter = twitter_setup()
-    twitter.update_with_media("/home/pi/Desktop/TweetingBabbage/{0}".format(filename), choice(status)) 
+    twitter.update_with_media("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename), choice(status)) 
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
