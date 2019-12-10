@@ -36,7 +36,7 @@ status = ["G's Only!!!","Looking Fresh, keeping  it cash",
 filename = ''
 ## Take the picture by defining a function that gets timestamp, takes a photo and then saves it. 
 
-def take_photo():
+def take_video():
     '''
     Creates filename variable which will name photo based on the time taken.  
     Uses PiCamera module to open camera, set up for 5 seconds, capture photo, and save it to path specified. 
@@ -72,7 +72,7 @@ def main():
     '''
     Triggers take_photo() and sent_tweet() functions
     '''
-    take_photo()
+    take_video()
     send_tweet()
 
 if __name__ == "__main__":
