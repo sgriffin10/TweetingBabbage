@@ -1,5 +1,5 @@
 # TweetingBabbage
-## Materials Needed
+## 1. Materials Needed
 We relied a lot on the resources at the Weissmen Foundry where we were able to find all of the equipment we needed for free. ** Bolded components: Not provided by Foundry  
 - Raspberry Pi 3 B+ Mini Computer 
 - Camera Module 
@@ -12,7 +12,7 @@ We relied a lot on the resources at the Weissmen Foundry where we were able to f
 - **Professor Li**
 
 
-## How to Create the Bear?
+## 2. How to Create the Bear?
 We used all of these requirements including the tutorial pages from Raspberry Pi to teach us how to: 
 - Write the code that programmed the Raspberry Pi and Camera to take picture
 - Install the required packages for Raspberry Pi ( NOOBS )
