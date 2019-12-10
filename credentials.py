@@ -1,4 +1,4 @@
-# Twitter App access keys for @user
+# Twitter App access keys for @RealSGriffin
 
 # Consume:
 CONSUMER_KEY    = 'kvXxAQ81MaIWXD8jzACc2gWMT'

@@ -2,16 +2,14 @@
 from picamera import PiCamera
 from datetime import datetime
 from time import sleep
-# from gpiozero import Button
 from random import choice 
 import tweepy
 from credentials import *
 
-## Set up the camera object and tactile button call
+## Set up the camera object 
 camera = PiCamera()
-# button = Button(14) #ask Prof Li to see if we can program a keyboard key to take the picture or act as the button
 
-####### TWITTER API STUFF #######
+####### TWITTER API #######
 def twitter_setup():
     """
     Utility function to setup the Twitter's API
@@ -39,12 +37,15 @@ filename = ''
 ## Take the picture by defining a function that gets timestamp, takes a photo and then saves it. 
 
 def take_photo():
-    
+    '''
+    Creates filename variable which will name photo based on the time taken.  
+    Uses PiCamera module to open camera, set up for 5 seconds, capture photo, and save it to path specified. 
+    '''
     global filename
     # Get the current datetime stamp 
     now = datetime.now()
     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
-    camera.brightness = 60 
+    # camera.brightness = 60 
     camera.start_preview(alpha=190)
     #camera.image_effect = 'colorswap'
     #camera.image_effect = 'blur'
@@ -58,27 +59,22 @@ def take_photo():
 
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
 def send_tweet():
+    '''
+    Uses Twitter API to send out tweet of the photo with the corresponding filepath below
+
+    '''
     twitter = twitter_setup()
     twitter.update_with_media("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename), choice(status)) 
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
 
-#@app.route("/Final_Project_Code", methods= ["POST"])
 def main():
+    '''
+    Triggers take_photo() and sent_tweet() functions
+    '''
     take_photo()
     send_tweet()
 
-
-## Code to trigger the function when the button is pressed
-# btn.when_pressed = main
-
 if __name__ == "__main__":
     main()
-
-
-# button.when_pressed = take_photo
-
-## Remove the camera.close()
-## Close the camera
-## camera.close()
