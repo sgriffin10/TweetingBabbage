@@ -44,6 +44,7 @@ def take_photo():
 
     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
     camera.start_preview(alpha=190)
+    camera.image_effect = 'colorswap'
     sleep(2)
     camera.capture("/home/pi/Desktop/TweetingBabbage/Photos{0}".format(filename))
     camera.stop_preview()
@@ -60,7 +61,7 @@ def send_tweet():
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
 
-@app.route("/Final_Project_Code", methods= ["POST"])
+#@app.route("/Final_Project_Code", methods= ["POST"])
 def main():
     take_photo()
     send_tweet()
