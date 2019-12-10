@@ -25,11 +25,13 @@ def twitter_setup():
     twitter = tweepy.API(auth)
     return twitter
 
-status = ["Looking Fresh, keeping  it cash", 
+status = ["G's Only!!!","Looking Fresh, keeping  it cash", 
             "Hello, World! I'm a Dub!", 
             "DM me if you think I'm a 10",
             "I belong on Reddit's r/hotpics", 
             "Come on, you know I'm a dub"]
+
+
 
 
 
@@ -41,11 +43,12 @@ def take_photo():
     global filename
     # Get the current datetime stamp 
     now = datetime.now()
-
     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
+    camera.brightness = 60 
     camera.start_preview(alpha=190)
     #camera.image_effect = 'colorswap'
-    sleep(2)
+    #camera.image_effect = 'blur'
+    sleep(5)
     camera.capture("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename))
     camera.stop_preview()
     # Code to get the timstamp
