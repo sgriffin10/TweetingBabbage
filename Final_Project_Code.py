@@ -27,7 +27,7 @@ status = ["G's Only!!!","Looking Fresh, keeping  it cash",
             "Hello, World! I'm a Dub!", 
             "DM me if you think I'm a 10",
             "I belong on Reddit's r/hotpics", 
-            "Come on, you know I'm a dub"]
+            "I'm a dub, you're a dub, Let's both get together and be dubs"]
 
 
 
