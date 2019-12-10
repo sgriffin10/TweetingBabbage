@@ -1,5 +1,5 @@
 ## Import the modules fro Rasp PI
-from picamera import PiCamera
+# from picamera import PiCamera
 from datetime import datetime
 from time import sleep
 # from gpiozero import Button
@@ -8,7 +8,7 @@ import tweepy
 from credentials import *
 
 ## Set up the camera object and tactile button call
-camera = PiCamera()
+# camera = PiCamera()
 # button = Button(14) #ask Prof Li to see if we can program a keyboard key to take the picture or act as the button
 
 ####### TWITTER API STUFF #######
@@ -32,22 +32,21 @@ status = ["Looking Fresh, keeping  it cash",
             "Come on, you know I'm a dub"]
 
 
-
 filename = ''
 ## Take the picture by defining a function that gets timestamp, takes a photo and then saves it. 
 
-def take_photo():
+# def take_photo():
     
-    global filename
-    # Get the current datetime stamp 
-    now = datetime.now()
+#     global filename
+#     # Get the current datetime stamp 
+#     now = datetime.now()
 
-    filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
-    camera.start_preview(alpha=190)
-    camera.image_effect = 'colorswap'
-    sleep(2)
-    camera.capture("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename))
-    camera.stop_preview()
+#     filename = "{0:%Y}-{0:%m}-{0:%H}-{0:%M}-{0:%S}.png".format(now)
+#     camera.start_preview(alpha=190)
+#     camera.image_effect = 'colorswap'
+#     sleep(2)
+#     camera.capture("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename))
+#     camera.stop_preview()
     # Code to get the timstamp
 	# Then take a photo and save it 
     
@@ -56,14 +55,14 @@ def take_photo():
 #sends the tweet to twitter but picks a random phrase from the ones we wrote above
 def send_tweet():
     twitter = twitter_setup()
-    twitter.update_with_media("/home/pi/Desktop/TweetingBabbage/Photos/{0}".format(filename), choice(status)) 
+    twitter.update_with_media("Photos2019-12-22-23-08.png", choice(status)) 
 	##code to send tweet
 
 #final action command that prompts the teddy bear to take the photo and then send the tweet
 
 #@app.route("/Final_Project_Code", methods= ["POST"])
 def main():
-    take_photo()
+    # take_photo()
     send_tweet()
 
 
